@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Draw Image To Canvas</title>
+    <title>Document</title>
     <style>
         body {
             background-color: rgba(97, 105, 122, 0.5);
@@ -46,6 +46,11 @@
         </div>
     </center>
     <script>
+        var canvas = document.getElementById("canvas");
+
+        const imgHeight = canvas.height;
+        const imgWidth = canvas.width;
+
         let fileInput = document.getElementById("fileinput").addEventListener("change", function(event) {
             if (event.target.files) {
                 let file = event.target.files[0]; //get items image from input
@@ -54,18 +59,15 @@
                 var reader = new FileReader();
                 reader.readAsDataURL(file); //read image from input 
                 reader.onloadend = function(event) {
-                    var image = new Image();
+                    var image = new Image(imgWidth, imgHeight); // Using optional size for image
                     image.src = event.target.result; //src image to display from reader file
 
                     image.onload = function() {
-                        var canvas = document.getElementById("canvas");
-                        canvas.width = image.width;
-                        canvas.height = image.height;
                         var ctx = canvas.getContext('2d');
                         console.log(image.width);
                         console.log(image.height);
 
-                        ctx.drawImage(image, 0, 0);
+                        ctx.drawImage(this, 0, 0, this.width, this.height);
                     }
                 }
             }

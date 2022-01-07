@@ -162,11 +162,11 @@
             <div class="add">
                 <div class="header-add">Add new book here!</div>
 
-                <label for="name">Name</label>
+                <label for="name_book">Name</label>
                 <input type="text" name="name" id="name_book" placeholder="c programming" onclick="if(this.placeholder == 'c programming') {this.placeholder = ''}" onBlur="if(this.placeholder == '') {this.placeholder = 'c programming'}" />
                 <label for="price">Price</label>
-                <input type="text" name="price" id="price_book" placeholder="1000" onclick="if(this.placeholder == '1000') {this.placeholder = ''}" onBlur="if(this.placeholder == '') {this.placeholder = '1000'}" />
-                <label for="category">Category</label>
+                <input type="text" name="price_book" id="price_book" placeholder="1000" onclick="if(this.placeholder == '1000') {this.placeholder = ''}" onBlur="if(this.placeholder == '') {this.placeholder = '1000'}" />
+                <label for="category_book">Category</label>
                 <input type="text" name="category" id="category_book" placeholder="coding" onclick="if(this.placeholder == 'coding') {this.placeholder = ''}" onBlur="if(this.placeholder == '') {this.placeholder = 'coding'}" />
 
 
@@ -244,6 +244,10 @@
                 document.getElementsByClassName("category")[selectedRow].innerHTML = "Category : " + formData.category_book;
                 document.getElementsByClassName("edit_book")[0].style.visibility = 'hidden';
                 document.getElementsByClassName("add_book")[0].style.visibility = 'visible';
+
+                names[selectedRow] = formData.name_book;
+                price[selectedRow] = formData.price_book;
+                category[selectedRow] = formData.category_book;
 
                 document.getElementsByClassName("header-add")[0].innerHTML = "Add new book here!";
                 header.style.backgroundColor = "rgb(147, 196, 125)";
